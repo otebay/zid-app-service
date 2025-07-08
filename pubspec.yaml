@@ -1,0 +1,23 @@
+name: zid_service_app
+description: A service management application for ZID complexes.
+version: 0.1.0
+environment:
+  sdk: ">=2.17.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  firebase_core: ^2.8.0
+  firebase_auth: ^4.4.0
+  cloud_firestore: ^4.7.0
+  firebase_storage: ^11.1.0
+  provider: ^6.0.5
+  flutter_localizations:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
