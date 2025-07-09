@@ -57,13 +57,19 @@ class _RegisterPageState extends State<RegisterPage> {
               children: [
                 TextFormField(
                   controller: _emailController,
-                  decoration: InputDecoration(labelText: AppStrings.of(context, 'email')),
+                  decoration: InputDecoration(
+                    labelText: AppStrings.of(context, 'email'),
+                    border: const OutlineInputBorder(),
+                  ),
                   validator: (v) => v!.isEmpty ? 'Required' : null,
                 ),
                 const SizedBox(height: 12),
                 TextFormField(
                   controller: _passwordController,
-                  decoration: InputDecoration(labelText: AppStrings.of(context, 'password')),
+                  decoration: InputDecoration(
+                    labelText: AppStrings.of(context, 'password'),
+                    border: const OutlineInputBorder(),
+                  ),
                   obscureText: true,
                   validator: (v) => v!.isEmpty ? 'Required' : null,
                 ),
@@ -72,6 +78,9 @@ class _RegisterPageState extends State<RegisterPage> {
                     ? const CircularProgressIndicator()
                     : ElevatedButton(
                         onPressed: _register,
+                        style: ElevatedButton.styleFrom(
+                          minimumSize: const Size.fromHeight(48),
+                        ),
                         child: Text(AppStrings.of(context, 'register')),
                       ),
               ],

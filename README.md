@@ -37,4 +37,4 @@ flutter pub get
 flutter run
 ```
 
-`main.dart` starts the app, initializes Firebase and displays the login screen. Based on the user role different home screens are shown with access to requests, notifications and settings. The app includes simple in-app localization supporting English, Russian and Kazakh selectable from the settings page.
+`main.dart` starts the app, initializes Firebase and displays the login screen. Based on the user role different home screens are shown with access to requests, notifications and settings. The app includes simple in-app localization supporting English, Russian and Kazakh selectable from the settings page. The default theme now uses the Roboto font from `assets/fonts` for a cleaner look.

@@ -22,6 +22,7 @@ class ZidServiceApp extends StatelessWidget {
           return MaterialApp(
             title: 'ZID Service App',
             debugShowCheckedModeBanner: false,
+            theme: ThemeData(fontFamily: 'Roboto'),
             locale: locale,
             supportedLocales: const [
               Locale('en'),
