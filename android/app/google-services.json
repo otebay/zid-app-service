@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "312397678947",
+    "project_id": "zid-service-app",
+    "storage_bucket": "zid-service-app.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:312397678947:android:3f5b381d42db5f709cab56",
+        "android_client_info": {
+          "package_name": "com.example.zid_service_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD9FHqZBWzz-B32nb8d6rjuX6jRJrRP7JY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
