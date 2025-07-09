@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../requests/presentation/requests_page.dart';
+import '../../requests/presentation/add_request_page.dart';
 import '../../notifications/presentation/notifications_page.dart';
 import '../../settings/presentation/settings_page.dart';
 
@@ -16,7 +16,7 @@ class ResidentHome extends StatelessWidget {
             title: const Text('Create Request'),
             onTap: () => Navigator.push(
               context,
-              MaterialPageRoute(builder: (_) => const RequestsPage(role: 'resident')),
+              MaterialPageRoute(builder: (_) => const AddRequestPage()),
             ),
           ),
           ListTile(
