@@ -4,12 +4,15 @@ import '../features/home/presentation/admin_home.dart';
 import '../features/home/presentation/staff_home.dart';
 import '../features/home/presentation/resident_home.dart';
 import '../features/auth/presentation/register_page.dart';
+import 'startup_page.dart';
 
 class AppRouter {
-  static const String initial = '/login';
+  static const String initial = '/';
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
+      case '/':
+        return MaterialPageRoute(builder: (_) => const StartupPage());
       case '/login':
         return MaterialPageRoute(builder: (_) => const LoginPage());
       case '/admin':

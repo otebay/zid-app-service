@@ -29,5 +29,12 @@ class AuthService {
     return appUser;
   }
 
+  Future<AppUser?> currentUser() async {
+    final user = _auth.currentUser;
+    if (user == null) return null;
+    final doc = await _db.collection('users').doc(user.uid).get();
+    return AppUser.fromMap(user.uid, doc.data() ?? {});
+  }
+
   Future<void> signOut() => _auth.signOut();
 }
