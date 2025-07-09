@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import '../data/auth_service.dart';
 
 import '../../../core/router.dart';
@@ -47,9 +46,12 @@ class _LoginPageState extends State<LoginPage> {
             Navigator.pushReplacementNamed(context, "/resident");
         }
       }
-    } catch (e) {
+    } on AuthException catch (e) {
       ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text(e.toString())));
+          .showSnackBar(SnackBar(content: Text(e.message)));
+    } catch (_) {
+      ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('An unexpected error occurred.')));
     } finally {
       if (mounted) setState(() => _loading = false);
     }
