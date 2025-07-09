@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../core/locale_provider.dart';
+import '../../../core/strings.dart';
 
 class SettingsPage extends StatelessWidget {
   const SettingsPage({Key? key}) : super(key: key);
@@ -8,18 +9,18 @@ class SettingsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final localeState = LocaleProvider.of(context);
     return Scaffold(
-      appBar: AppBar(title: const Text('Settings')),
+      appBar: AppBar(title: Text(AppStrings.of(context, 'settings'))),
       body: ListView(
         children: [
           ListTile(
-            title: const Text('Language'),
+            title: Text(AppStrings.of(context, 'language')),
             subtitle: Text(localeState.locale.languageCode),
             onTap: () {
               showDialog(
                 context: context,
                 builder: (context) {
                   return SimpleDialog(
-                    title: const Text('Select language'),
+                    title: Text(AppStrings.of(context, 'selectLanguage')),
                     children: [
                       SimpleDialogOption(
                         child: const Text('English'),
@@ -49,11 +50,11 @@ class SettingsPage extends StatelessWidget {
             },
           ),
           const Divider(),
-          const ListTile(title: Text('User agreement')),
-          const ListTile(title: Text('Privacy policy')),
-          const ListTile(title: Text('Authorization history')),
-          const ListTile(title: Text('Delete account')),
-          const ListTile(title: Text('App version 0.1.0')),
+          ListTile(title: Text(AppStrings.of(context, 'userAgreement'))),
+          ListTile(title: Text(AppStrings.of(context, 'privacyPolicy'))),
+          ListTile(title: Text(AppStrings.of(context, 'authorizationHistory'))),
+          ListTile(title: Text(AppStrings.of(context, 'deleteAccount'))),
+          ListTile(title: Text(AppStrings.of(context, 'appVersion'))),
         ],
       ),
     );

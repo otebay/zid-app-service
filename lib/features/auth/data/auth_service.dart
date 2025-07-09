@@ -16,4 +16,18 @@ class AuthService {
     final doc = await _db.collection('users').doc(user.uid).get();
     return AppUser.fromMap(user.uid, doc.data() ?? {});
   }
+
+  Future<AppUser?> registerResident(String email, String password) async {
+    final credential = await _auth.createUserWithEmailAndPassword(
+      email: email,
+      password: password,
+    );
+    final user = credential.user;
+    if (user == null) return null;
+    final appUser = AppUser(id: user.uid, email: email, role: 'resident');
+    await _db.collection('users').doc(user.uid).set(appUser.toMap());
+    return appUser;
+  }
+
+  Future<void> signOut() => _auth.signOut();
 }

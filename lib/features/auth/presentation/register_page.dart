@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
 import '../data/auth_service.dart';
-
 import '../../../core/router.dart';
 import '../../../core/strings.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({Key? key}) : super(key: key);
+class RegisterPage extends StatefulWidget {
+  const RegisterPage({Key? key}) : super(key: key);
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<RegisterPage> createState() => _RegisterPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _RegisterPageState extends State<RegisterPage> {
   final AuthService _authService = AuthService();
   final _formKey = GlobalKey<FormState>();
   final _emailController = TextEditingController();
@@ -24,25 +23,17 @@ class _LoginPageState extends State<LoginPage> {
     _passwordController.dispose();
     super.dispose();
   }
-  Future<void> _login() async {
+
+  Future<void> _register() async {
     if (!_formKey.currentState!.validate()) return;
     setState(() => _loading = true);
     try {
-      final user = await _authService.signIn(
+      final user = await _authService.registerResident(
         _emailController.text.trim(),
         _passwordController.text.trim(),
       );
       if (user != null) {
-        switch (user.role) {
-          case "admin":
-            Navigator.pushReplacementNamed(context, "/admin");
-            break;
-          case "staff":
-            Navigator.pushReplacementNamed(context, "/staff");
-            break;
-          default:
-            Navigator.pushReplacementNamed(context, "/resident");
-        }
+        Navigator.pushReplacementNamed(context, '/resident');
       }
     } catch (e) {
       ScaffoldMessenger.of(context)
@@ -52,11 +43,10 @@ class _LoginPageState extends State<LoginPage> {
     }
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(AppStrings.of(context, 'login'))),
+      appBar: AppBar(title: Text(AppStrings.of(context, 'register'))),
       body: Center(
         child: SingleChildScrollView(
           padding: const EdgeInsets.all(16),
@@ -81,14 +71,9 @@ class _LoginPageState extends State<LoginPage> {
                 _loading
                     ? const CircularProgressIndicator()
                     : ElevatedButton(
-                        onPressed: _login,
-                        child: Text(AppStrings.of(context, 'login')),
+                        onPressed: _register,
+                        child: Text(AppStrings.of(context, 'register')),
                       ),
-                const SizedBox(height: 12),
-                TextButton(
-                  onPressed: () => Navigator.pushNamed(context, '/register'),
-                  child: Text(AppStrings.of(context, 'register')),
-                ),
               ],
             ),
           ),

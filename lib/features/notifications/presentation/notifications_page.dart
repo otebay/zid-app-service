@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../core/strings.dart';
 
 class NotificationsPage extends StatelessWidget {
   final String role;
@@ -7,8 +8,8 @@ class NotificationsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Notifications')),
-      body: Center(child: Text('Notifications for ' + role)),
+      appBar: AppBar(title: Text(AppStrings.of(context, 'notifications'))),
+      body: Center(child: Text('${AppStrings.of(context, 'notifications')} for $role')),
     );
   }
 }

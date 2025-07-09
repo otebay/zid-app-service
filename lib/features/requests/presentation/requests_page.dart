@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../core/strings.dart';
 
 class RequestsPage extends StatelessWidget {
   final String role; // admin, staff, resident
@@ -7,9 +8,9 @@ class RequestsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Requests')),
+      appBar: AppBar(title: Text(AppStrings.of(context, 'requests'))),
       body: Center(
-        child: Text('Requests screen for ' + role),
+        child: Text('${AppStrings.of(context, 'requests')} screen for $role'),
       ),
     );
   }
