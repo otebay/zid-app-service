@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # ZID Service App
 
 This repository contains the code for a Flutter application used to manage service requests for ZID residential complexes. The project is structured using a simple clean‑architecture approach and relies on Firebase for authentication and data storage.
@@ -29,31 +28,27 @@ The app uses the following Firebase packages:
 
 Ensure Firebase is initialized before running the app. Authentication is handled through `AuthService` which reads the user document from Firestore to determine the role (admin, staff or resident).
 
-## Running
+## Setup
 
-Install Flutter and run:
+Clone the repository and run the following commands:
 
 ```bash
-flutter pub get
-flutter run
+flutterfire configure   # connect the app to your Firebase project
+flutter pub get         # install dependencies
+flutter analyze         # optional: check for any static analysis issues
+flutter run             # run the app on a connected device or emulator
 ```
 
-`main.dart` starts the app, initializes Firebase and displays the login screen. Based on the user role different home screens are shown with access to requests, notifications and settings.
-=======
-# zid_service_app
+## Role‑based navigation
 
-A new Flutter project.
+The initial screen (`StartupPage`) determines the signed in user's role and directs them to the appropriate home page. After reading the user's profile from Firestore, it navigates to `/admin`, `/staff` or `/resident` so that administrators, staff members and residents each see the correct dashboard.
 
-## Getting Started
+## Scripts
 
-This project is a starting point for a Flutter application.
+A simple helper script is provided to run the analyzer:
 
-A few resources to get you started if this is your first Flutter project:
+```bash
+./scripts/analyze.sh
+```
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
->>>>>>> fe881a8 (build gradle kts adding all project)
+This wraps `flutter analyze` and helps ensure code quality.
