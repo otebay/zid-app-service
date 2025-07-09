@@ -1,14 +1,13 @@
-<<<<<<< HEAD
 # ZID Service App
 
-This repository contains the code for a Flutter application used to manage service requests for ZID residential complexes. The project is structured using a simple clean‑architecture approach and relies on Firebase for authentication and data storage.
+This Flutter project manages service requests for ZID residential complexes. It follows a simple clean architecture and relies on Firebase for authentication and data storage.
 
 ## Folder Structure
 
 ```
 lib/
   core/               # routing and localization helpers
-  features/
+  features/           # application features
     auth/             # login and user management
     home/             # role specific home pages
     requests/         # request creation and listing
@@ -39,21 +38,41 @@ flutter run
 ```
 
 `main.dart` starts the app, initializes Firebase and displays the login screen. Based on the user role different home screens are shown with access to requests, notifications and settings.
-=======
-# zid_service_app
 
-A new Flutter project.
+## Firestore Collections
 
-## Getting Started
+### `jks`
+Residential complexes are stored in the `jks` collection. A document example:
 
-This project is a starting point for a Flutter application.
+```json
+{
+  "name": "Sunrise Complex",
+  "address": "1 Example Street"
+}
+```
 
-A few resources to get you started if this is your first Flutter project:
+### `users`
+Users reference a residential complex via `zhksId`:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+```json
+{
+  "email": "resident@example.com",
+  "role": "resident",
+  "zhksId": "<jks-document-id>"
+}
+```
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
->>>>>>> fe881a8 (build gradle kts adding all project)
+### `requests`
+Service requests belong to a complex and are created by a user:
+
+```json
+{
+  "title": "Water leak",
+  "description": "Leak in the kitchen",
+  "zhksId": "<jks-document-id>",
+  "creatorId": "<user-id>",
+  "type": "resident",
+  "status": "new",
+  "createdAt": 1688166400
+}
+```
